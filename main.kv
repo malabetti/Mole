@@ -1,0 +1,66 @@
+ScreenManager:
+    MainScreen:
+    BibliotecaScreen:
+    CameraScreen:
+    CameraEspecificaScreen:
+
+<MainScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Mole"
+            left_action_items: [["home", lambda x: app.on_back_button_pressed()]]
+        BoxLayout:
+            orientation: 'vertical'
+            padding: 20
+            spacing: 20
+            Widget: 
+                size_hint_y: 1
+            MDRaisedButton:
+                text: 'Câmera Inteligente'
+                size_hint_y: None
+                height: '48dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: app.root.current = 'camera'
+            MDRaisedButton:
+                text: 'Biblioteca de Moléculas'
+                size_hint_y: None
+                height: '48dp'
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                on_release: app.root.current = 'biblioteca'
+            Widget: 
+                size_hint_y: 1
+
+<BibliotecaScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Mole"
+            left_action_items: [["home", lambda x: app.on_back_button_pressed()]]
+        Widget: 
+            size_hint_y: 1
+
+
+<CameraScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Mole"
+            left_action_items: [["home", lambda x: app.on_back_button_pressed()]]
+        Image:
+            id: camera_feed
+
+<CameraEspecificaScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        MDTopAppBar:
+            title: "Mole"
+            left_action_items: [["home", lambda x: app.on_back_button_pressed()]]
+        Image:
+            id: camera_feed
+        MDRaisedButton:
+            text: 'Recarregar'
+            size_hint_y: None
+            height: '48dp'
+            pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+            on_release: app.root.get_screen('cameraespecifica').toggle_reavaliate()
