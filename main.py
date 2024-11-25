@@ -17,8 +17,8 @@ ERROR_DIST = 150
 MIN_MATCHES = 120
 DEFAULT_COLOR = (0, 0, 255)
 TARGET = ""
-models = ['H2O.jpg', 'NaCl.jpg', 'FePt.jpg']
-materials = ['H2O.mtl', 'H2O.mtl', 'H2O.mtl']
+models = ['H2O.jpg', 'NaCl.jpg', 'FePt.jpg', 'CaF2.jpg', 'PCl5.jpg']
+#materials = ['H2O.mtl', 'H2O.mtl', 'H2O.mtl']
 
 current_target = None
 
@@ -100,6 +100,8 @@ class CameraScreen(Screen):
         self.objNaCl = OBJ(os.path.join(dir_name, 'models/nacl.obj'), swapyz=True)
         self.objH2O = OBJ(os.path.join(dir_name, 'models/H2O.obj'), swapyz=True)
         self.objFePt = OBJ(os.path.join(dir_name, 'models/FePt.obj'), swapyz=True)
+        self.objCaF2 = OBJ(os.path.join(dir_name, 'models/CaF2.obj'), swapyz=True)
+        self.objPCl5 = OBJ(os.path.join(dir_name, 'models/PCl5.obj'), swapyz=True)
         self.camera_parameters = np.array([[800, 0, 320], [0, 800, 240], [0, 0, 1]])
         self.model_data = {}
         self.current_target = ''
@@ -179,6 +181,10 @@ class CameraScreen(Screen):
                                 mainObj = self.objFePt
                             case 'H2O.jpg':
                                 mainObj = self.objH2O
+                            case 'CaF2.jpg':
+                                mainObj = self.objCaF2
+                            case 'PCl5.jpg':
+                                mainObj = self.objPCl5
                             case _:
                                 print("Modelo não reconhecido")
 
@@ -216,6 +222,8 @@ class CameraEspecificaScreen(Screen):
         self.objNaCl = OBJ(os.path.join(dir_name, 'models/nacl.obj'), swapyz=True)
         self.objH2O = OBJ(os.path.join(dir_name, 'models/H2O.obj'), swapyz=True)
         self.objFePt = OBJ(os.path.join(dir_name, 'models/FePt.obj'), swapyz=True)
+        self.objCaF2 = OBJ(os.path.join(dir_name, 'models/CaF2.obj'), swapyz=True)
+        self.objPCl5 = OBJ(os.path.join(dir_name, 'models/PCl5.obj'), swapyz=True)
         self.camera_parameters = np.array([[800, 0, 320], [0, 800, 240], [0, 0, 1]])
         self.model_data = {}
         self.current_target = ''
@@ -313,6 +321,10 @@ class CameraEspecificaScreen(Screen):
                                 mainObj = self.objFePt
                             case 'H2O.jpg':
                                 mainObj = self.objH2O
+                            case 'CaF2.jpg':
+                                mainObj = self.objCaF2
+                            case 'PCl5.jpg':
+                                mainObj = self.objPCl5
                             case _:
                                 print("Modelo não reconhecido")
 

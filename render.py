@@ -11,6 +11,8 @@ DEFAULT_COLOR = (0, 0, 255)
 TARGET = ""
 models = ['target_H20.jpg', 'NaCl_target.jpg', 'FePt.png']
 materials = ['H2O.mtl', 'H2O.mtl', 'H2O.mtl']
+COLORS = [(255, 0, 0), (0, 255, 0), (0, 0, 255), (255, 255, 0)]  # Azul, Verde, Vermelho, Amarelo
+
 
 def render(frame, obj, projection):
     h, w = frame.shape[:2]
@@ -28,6 +30,7 @@ def render(frame, obj, projection):
             diffuse_color = material_props.get('Kd', obj.color)
             material_cache[material_name] = tuple([int(c * 255) for c in diffuse_color])
     '''
+    i = 0
     for face in obj.faces:
         face_vertices = face[0]
         points = np.array([centered_points[vertex - 1] for vertex in face_vertices])
@@ -37,7 +40,7 @@ def render(frame, obj, projection):
         imgpts = np.int32(dst)  # Converter pontos para inteiros para desenhar
 
         # Obter o material para a face atual, se disponível
-        material = face[3] if len(face) == 4 else None
+        #material = face[3] if len(face) == 4 else None
 
         '''if color and material and material in material_cache:
             color = material_cache[material]
@@ -45,7 +48,10 @@ def render(frame, obj, projection):
         
             color = DEFAULT_COLOR
         '''
-        color = DEFAULT_COLOR
+        #color = DEFAULT_COLOR
+        color = obj.face_color[i]
+        i+=1
+        #color = color2
         # Desenhar a face no frame
         cv2.fillConvexPoly(frame, imgpts, color)
 
